@@ -4,4 +4,10 @@ ENV MYSQL_DATABASE users
 ENV MYSQL_USER aminos
 ENV MYSQL_PASSWORD 1234
 ADD script.sql /docker-entrypoint-initdb.d
+
+RUN apk add py3-setuptools
+COPY app.py /usr/src/app/
+
 EXPOSE 3306
+
+CMD ["python3", "/usr/src/app/app.py"]
