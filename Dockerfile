@@ -5,6 +5,9 @@ ENV MYSQL_USER aminos
 ENV MYSQL_PASSWORD 1234
 ADD script.sql /docker-entrypoint-initdb.d
 
+RUN pip install sqlalchemy
+RUN pip install pymysql
+
 COPY app.py /usr/src/app/
 
 EXPOSE 3306
